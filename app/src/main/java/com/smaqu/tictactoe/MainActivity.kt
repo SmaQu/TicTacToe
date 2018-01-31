@@ -8,7 +8,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), View.OnClickListener {
+class MainActivity : AppCompatActivity(), View.OnClickListener,ResultDialogFragment.Callback {
 
     // 0 - yellow, 1 = red
 
@@ -67,32 +67,41 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
             if (2 in items) {
                 if (items[0] == items[1] && items[1] == items[2] && items[0] != 2) {
-                    Toast.makeText(applicationContext, "Won1", Toast.LENGTH_SHORT).show()
+                    winner(items[0])
                 }
                 if (items[0] == items[4] && items[4] == items[8] && items[0] != 2) {
-                    Toast.makeText(applicationContext, "Won2", Toast.LENGTH_SHORT).show()
+                    winner(items[0])
                 }
                 if (items[0] == items[3] && items[3] == items[6] && items[0] != 2) {
-                    Toast.makeText(applicationContext, "Won3", Toast.LENGTH_SHORT).show()
+                    winner(items[0])
                 }
                 if (items[3] == items[4] && items[4] == items[5] && items[3] != 2) {
-                    Toast.makeText(applicationContext, "Won4", Toast.LENGTH_SHORT).show()
+                    winner(items[3])
                 }
                 if (items[6] == items[7] && items[7] == items[8] && items[6] != 2) {
-                    Toast.makeText(applicationContext, "Won5", Toast.LENGTH_SHORT).show()
+                    winner(items[6])
                 }
                 if (items[1] == items[4] && items[4] == items[7] && items[1] != 2) {
-                    Toast.makeText(applicationContext, "Won6", Toast.LENGTH_SHORT).show()
+                    winner(items[1])
                 }
                 if (items[2] == items[5] && items[5] == items[8] && items[2] != 2) {
-                    Toast.makeText(applicationContext, "Won7", Toast.LENGTH_SHORT).show()
+                    winner(items[2])
                 }
                 if (items[2] == items[4] && items[4] == items[6] && items[2] != 2) {
-                    Toast.makeText(applicationContext, "Won8", Toast.LENGTH_SHORT).show()
+                    winner(items[2])
                 }
             } else {
-                Toast.makeText(applicationContext, "Draw", Toast.LENGTH_SHORT).show()
+                winner(2)
             }
         }
     }
+    private fun winner(gameState: Int){
+        val dialogFragment = ResultDialogFragment.createFragment(gameState)
+        dialogFragment.isCancelable = false
+        dialogFragment.show(fragmentManager,"TAG")
+    }
+
+    override fun restartGame() {
+    }
 }
+

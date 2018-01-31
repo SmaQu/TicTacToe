@@ -8,4 +8,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="DialogStyle" parent="@android:style/Theme.Dialog">
+        <item name="android:windowMinWidthMinor">90%</item>
+        <item name="android:windowMinWidthMajor">90%</item>
+        <item name="android:background">#e7e7e7</item>
+    </style>
+
 </resources>
