@@ -8,6 +8,7 @@
     <!--This margins are only for my own purpose. I don't like do something like that, because this is not good way to set size for many devices, it's only for -->
 
     <GridLayout
+        android:id="@+id/gl_activity_main"
         android:layout_width="match_parent"
         android:layout_height="360dp"
         android:layout_centerInParent="true"
