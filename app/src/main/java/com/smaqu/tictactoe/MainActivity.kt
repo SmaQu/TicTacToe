@@ -11,9 +11,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, ResultDialogFrag
 
 
     // 1 - yellow, 0 = red
-    var counter = 0
-    var activePlayer = 0
-    var items = arrayOf(2, 2, 2, 2, 2, 2, 2, 2, 2)
+    private var counter = 0
+    private var activePlayer = 0
+    private var items = arrayOf(2, 2, 2, 2, 2, 2, 2, 2, 2)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
