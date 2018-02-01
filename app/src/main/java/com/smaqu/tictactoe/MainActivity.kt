@@ -2,13 +2,16 @@ package com.smaqu.tictactoe
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener, ResultDialogFragment.Callback {
 
+
+    companion object {
+        const val TAG = "MainActivity"
+    }
 
     // 1 - yellow, 0 = red
     private var counter = 0
@@ -59,54 +62,54 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, ResultDialogFrag
             }
             items[counter.toInt()] = activePlayer
             imageView.animate().translationYBy(1000f).duration = 300
-                if (items[0] == items[1] && items[1] == items[2] && items[0] != 2) {
-                    winner(items[0])
-                }
-                if (items[0] == items[3] && items[3] == items[6] && items[0] != 2) {
-                    winner(items[0])
-                }
-                if (items[0] == items[4] && items[4] == items[8] && items[0] != 2) {
-                    winner(items[0])
-                }
-                if (items[3] == items[4] && items[4] == items[5] && items[3] != 2) {
-                    winner(items[3])
-                }
-                if (items[6] == items[7] && items[7] == items[8] && items[6] != 2) {
-                    winner(items[6])
-                }
-                if (items[1] == items[4] && items[4] == items[7] && items[1] != 2) {
-                    winner(items[1])
-                }
-                if (items[2] == items[5] && items[5] == items[8] && items[2] != 2) {
-                    winner(items[2])
-                }
-                if (items[2] == items[4] && items[4] == items[6] && items[2] != 2) {
-                    winner(items[2])
-                }
-                if (2 in items) {
-                } else {
-                    winner(2)
-                }
+            if (items[0] == items[1] && items[1] == items[2] && items[0] != 2) {
+                winner(items[0])
+            }
+            if (items[0] == items[3] && items[3] == items[6] && items[0] != 2) {
+                winner(items[0])
+            }
+            if (items[0] == items[4] && items[4] == items[8] && items[0] != 2) {
+                winner(items[0])
+            }
+            if (items[3] == items[4] && items[4] == items[5] && items[3] != 2) {
+                winner(items[3])
+            }
+            if (items[6] == items[7] && items[7] == items[8] && items[6] != 2) {
+                winner(items[6])
+            }
+            if (items[1] == items[4] && items[4] == items[7] && items[1] != 2) {
+                winner(items[1])
+            }
+            if (items[2] == items[5] && items[5] == items[8] && items[2] != 2) {
+                winner(items[2])
+            }
+            if (items[2] == items[4] && items[4] == items[6] && items[2] != 2) {
+                winner(items[2])
+            }
+            if (2 in items) {
+            } else {
+                winner(2)
+            }
         }
     }
 
     private fun winner(gameState: Int) {
         val dialogFragment = ResultDialogFragment.createFragment(gameState)
         dialogFragment.isCancelable = false
-        if(counter==0){
+        if (counter == 0) {
             counter++
-            dialogFragment.show(fragmentManager, "TAG")
+            dialogFragment.show(fragmentManager, TAG)
         }
     }
 
     override fun restartGame() {
-        for(i in items.indices){
-            items[i] = 2
+        for (i in items.indices) {
             val image = gl_activity_main.getChildAt(i) as ImageView
             image.setImageResource(0)
+            items[i] = 2
         }
         activePlayer = 0
-        counter=0
+        counter = 0
     }
 }
 

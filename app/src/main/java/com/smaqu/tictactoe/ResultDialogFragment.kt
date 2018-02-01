@@ -53,15 +53,15 @@ class ResultDialogFragment : DialogFragment() {
         val buttonRestart = view?.findViewById<Button>(R.id.b_dialog_fragment_start)
         when (gameState) {
             1 -> {
-                textViewWiner?.text = "Yellow won"
+                textViewWiner?.text = getString(R.string.yellow_won)
                 imageWinner?.setImageResource(R.drawable.yellow)
             }
             0 -> {
-                textViewWiner?.text = "Red won"
+                textViewWiner?.text = getString(R.string.red_won)
                 imageWinner?.setImageResource(R.drawable.red)
             }
             2 -> {
-                textViewWiner?.text = "Draw"
+                textViewWiner?.text = getString(R.string.draw)
                 imageWinner?.setImageResource(R.drawable.red_yellow)
             }
         }
